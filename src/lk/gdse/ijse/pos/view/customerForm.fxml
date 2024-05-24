@@ -32,7 +32,7 @@
       <TextField layoutX="122.0" layoutY="97.0" promptText="Name : " />
       <TextField layoutX="292.0" layoutY="97.0" promptText="Address : " />
       <TextField layoutX="460.0" layoutY="97.0" prefHeight="26.0" prefWidth="134.0" promptText="Salary : " />
-      <JFXButton buttonType="RAISED" layoutX="479.0" layoutY="139.0" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: #e67e22;" text="Save Customer" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="479.0" layoutY="139.0" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: #e67e22;" text="Save Customer" textFill="#070707">
          <font>
             <Font name="Apple Symbols" size="13.0" />
          </font>
