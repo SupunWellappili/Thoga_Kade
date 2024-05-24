@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.gdse.ijse.pos.controller.DashBoardFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="236.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.gdse.ijse.pos.controller.DashBoardFormController">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="3.0" layoutY="4.0" onAction="#openCustomerFormOnAction" prefHeight="141.0" prefWidth="198.0" style="-fx-background-color: #f1c40f;" text="Customer">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="205.0" layoutY="5.0" onAction="#openItemFormOnAction" prefHeight="141.0" prefWidth="198.0" style="-fx-background-color: green;" text="Item">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="404.0" layoutY="5.0" onAction="#openOrderFormOnAction" prefHeight="141.0" prefWidth="198.0" style="-fx-background-color: #2980b9;" text="Order">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="2.0" layoutY="153.0" onAction="#openPlaceOrderFormOnAction" prefHeight="73.0" prefWidth="599.0" style="-fx-background-color: #8e44ad;" text="Place Order">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
 </AnchorPane>
