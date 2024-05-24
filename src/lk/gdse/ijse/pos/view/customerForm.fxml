@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.gdse.ijse.pos.controller.CustomerFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.gdse.ijse.pos.controller.CustomerFormController">
+   <children>
+      <Label layoutX="198.0" layoutY="22.0" prefHeight="43.0" prefWidth="243.0" text="Customer Form" textFill="#612d44">
+         <font>
+            <Font name="Big Caslon Medium" size="30.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="23.0" prefHeight="34.0" prefWidth="104.0" style="-fx-background-color: #2c3e50;" text="Back Home" textFill="WHITE">
+         <font>
+            <Font name="AppleMyungjo Regular" size="11.0" />
+         </font>
+      </JFXButton>
+      <Separator layoutX="24.0" layoutY="74.0" prefHeight="0.0" prefWidth="561.0" />
+      <JFXButton buttonType="RAISED" layoutX="483.0" layoutY="23.0" prefHeight="34.0" prefWidth="104.0" style="-fx-background-color: #2c3e50;" text="+ New Customer" textFill="WHITE">
+         <font>
+            <Font name="AppleMyungjo Regular" size="11.0" />
+         </font>
+      </JFXButton>
+      <TextField layoutX="12.0" layoutY="97.0" prefHeight="26.0" prefWidth="98.0" promptText="Customer ID : " />
+      <TextField layoutX="122.0" layoutY="97.0" promptText="Name : " />
+      <TextField layoutX="292.0" layoutY="97.0" promptText="Address : " />
+      <TextField layoutX="460.0" layoutY="97.0" prefHeight="26.0" prefWidth="134.0" promptText="Salary : " />
+      <JFXButton buttonType="RAISED" layoutX="479.0" layoutY="139.0" prefHeight="24.0" prefWidth="86.0" style="-fx-background-color: #e67e22;" text="Save Customer" textFill="WHITE">
+         <font>
+            <Font name="Apple Symbols" size="13.0" />
+         </font>
+      </JFXButton>
+      <TextField layoutX="14.0" layoutY="137.0" prefHeight="26.0" prefWidth="441.0" promptText="Search  Customer : " />
+      <TableView layoutX="12.0" layoutY="178.0" prefHeight="200.0" prefWidth="578.0" style="-fx-background-color: #95a5a6;">
+        <columns>
+          <TableColumn prefWidth="88.16092586517334" text=" ID" />
+          <TableColumn prefWidth="119.9195556640625" text=" Name" />
+            <TableColumn minWidth="0.0" prefWidth="151.18324279785156" text="Address" />
+            <TableColumn minWidth="9.195404052734375" prefWidth="130.23629760742188" text="Salary" />
+            <TableColumn minWidth="9.195404052734375" prefWidth="92.763671875" text="Option" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>
