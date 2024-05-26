@@ -22,13 +22,13 @@
       <TextField fx:id="txtAddress" layoutX="292.0" layoutY="97.0" promptText="Address : " />
       <TextField fx:id="txtSalary" layoutX="460.0" layoutY="97.0" prefHeight="26.0" prefWidth="134.0" promptText="Salary : " />
       <TextField layoutX="14.0" layoutY="137.0" prefHeight="26.0" prefWidth="441.0" promptText="Search  Customer : " />
-      <TableView layoutX="12.0" layoutY="178.0" prefHeight="200.0" prefWidth="578.0" style="-fx-background-color: #95a5a6;">
+      <TableView fx:id="tblCustomer" layoutX="12.0" layoutY="178.0" prefHeight="200.0" prefWidth="578.0" style="-fx-background-color: #7f8c8d;">
         <columns>
-          <TableColumn prefWidth="88.16092586517334" text=" ID" />
-          <TableColumn prefWidth="119.9195556640625" text=" Name" />
-            <TableColumn minWidth="0.0" prefWidth="151.18324279785156" text="Address" />
-            <TableColumn minWidth="9.195404052734375" prefWidth="130.23629760742188" text="Salary" />
-            <TableColumn minWidth="9.195404052734375" prefWidth="92.763671875" text="Option" />
+          <TableColumn fx:id="colID" prefWidth="88.16092586517334" text=" ID" />
+          <TableColumn fx:id="colName" prefWidth="119.9195556640625" text=" Name" />
+            <TableColumn fx:id="colAddress" minWidth="0.0" prefWidth="151.18324279785156" text="Address" />
+            <TableColumn fx:id="colSalary" minWidth="9.195404052734375" prefWidth="130.23629760742188" text="Salary" />
+            <TableColumn fx:id="colOption" minWidth="9.195404052734375" prefWidth="92.763671875" text="Option" />
         </columns>
       </TableView>
       <Button layoutX="472.0" layoutY="138.0" mnemonicParsing="false" onAction="#saveCustomerOnAction" text="Save customer" />
