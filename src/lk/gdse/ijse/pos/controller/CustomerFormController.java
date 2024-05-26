@@ -21,7 +21,7 @@ public class CustomerFormController {
     public TableColumn colSalary;
     public TableColumn colOption;
 
-    public void initialize(){
+    public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -30,15 +30,38 @@ public class CustomerFormController {
         searchCustomer();
     }
 
-    private void searchCustomer(){
-        ObservableList<CustomerTM>  tmList =FXCollections.observableArrayList();
-        for (Customer c :Database.customerTable) {
-            Button btn =new Button("Delete");
-            CustomerTM tm = new CustomerTM(c.getId(),c.getName(),c.getAddress(),c.getSalary(),btn);
+    private void searchCustomer() {
+        ObservableList<CustomerTM> tmList = FXCollections.observableArrayList();
+        for (Customer c : Database.customerTable) {
+            Button btn = new Button("Delete");
+            CustomerTM tm = new CustomerTM(c.getId(), c.getName(), c.getAddress(), c.getSalary(), btn);
             tmList.add(tm);
+
+
+
+            btn.setOnAction(event -> {
+               // System.out.println(c.getId());
+                Alert alert =new Alert(Alert.AlertType.CONFIRMATION,"Are You sure whether do you want to delete this Customer?",ButtonType.OK,ButtonType.NO);
+                //alert.show();
+                alert.showAndWait();
+
+               boolean isDeleted =  Database.customerTable.remove(c);
+                if (isDeleted) {
+                    searchCustomer();
+                    clearFields();
+                    new Alert(Alert.AlertType.INFORMATION, "Customer Deleted!").show();
+
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                }
+
+
+            });
         }
 
         tblCustomer.setItems(tmList);
+
+
     }
 
     public void saveCustomerOnAction(ActionEvent actionEvent) {
@@ -54,7 +77,7 @@ public class CustomerFormController {
         }
     }
 
-    private void clearFields(){
+    private void clearFields() {
         txtID.clear();
         txtName.clear();
         txtAddress.clear();
