@@ -9,6 +9,8 @@ import lk.gdse.ijse.pos.db.Database;
 import lk.gdse.ijse.pos.modal.Customer;
 import lk.gdse.ijse.pos.view.tm.CustomerTM;
 
+import java.util.Optional;
+
 public class CustomerFormController {
     public TextField txtID;
     public TextField txtName;
@@ -41,21 +43,21 @@ public class CustomerFormController {
 
             btn.setOnAction(event -> {
                // System.out.println(c.getId());
-                Alert alert =new Alert(Alert.AlertType.CONFIRMATION,"Are You sure whether do you want to delete this Customer?",ButtonType.OK,ButtonType.NO);
+                Alert alert =new Alert(Alert.AlertType.CONFIRMATION,"Are You sure whether do you want to delete this Customer?",ButtonType.YES,ButtonType.NO);
                 //alert.show();
-                alert.showAndWait();
+                Optional<ButtonType> buttonType = alert.showAndWait();
+                if (buttonType.get()==ButtonType.YES){
 
-               boolean isDeleted =  Database.customerTable.remove(c);
-                if (isDeleted) {
-                    searchCustomer();
-                    clearFields();
-                    new Alert(Alert.AlertType.INFORMATION, "Customer Deleted!").show();
+                    boolean isDeleted =  Database.customerTable.remove(c);
+                    if (isDeleted) {
+                        searchCustomer();
+                        clearFields();
+                        new Alert(Alert.AlertType.INFORMATION, "Customer Deleted!").show();
 
-                } else {
-                    new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                    } else {
+                        new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                    }
                 }
-
-
             });
         }
 
