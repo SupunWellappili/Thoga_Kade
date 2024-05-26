@@ -33,14 +33,18 @@ public class CustomerFormController {
         searchCustomer();
 
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (null!=newValue){ //newValue != null -> Late (null akak new object aka nullda kiynawa wada late new object akak null da kiyla blnna)
             setData(newValue);
+            }
         });
     }
+
     private void setData(CustomerTM tm) {
         txtID.setText(tm.getId());
         txtName.setText(tm.getName());
         txtAddress.setText(tm.getAddress());
-        txtSalary.setText(String.valueOf(tm.getSalary()));//get Double .Return String type
+        txtSalary.setText(String.valueOf(tm.getSalary()));//get  Double .Return String type
+        btnSaveCustomer.setText("Update Customer");
 
     }
 
@@ -81,7 +85,7 @@ public class CustomerFormController {
     public void saveCustomerOnAction(ActionEvent actionEvent) {
         Customer c1 = new Customer(txtID.getText(), txtName.getText(), txtAddress.getText(), Double.parseDouble(txtSalary.getText()));
 
-        if (btnSaveCustomer.getText().equalsIgnoreCase("Save Customer")){
+        if (btnSaveCustomer.getText().equalsIgnoreCase("Save Customer")) {
             //save
             boolean isSaved = Database.customerTable.add(c1);
             if (isSaved) {
@@ -93,12 +97,18 @@ public class CustomerFormController {
                 new Alert(Alert.AlertType.WARNING, "Try Again!").show();
             }
 
-        }else {
+        } else {
             //update
-
+            for (int i = 0; i < Database.customerTable.size(); i++) {
+                if (txtID.getText().equalsIgnoreCase(Database.customerTable.get(i).getId())) {
+                    Database.customerTable.get(i).setName(txtName.getText());
+                    Database.customerTable.get(i).setAddress(txtAddress.getText());
+                    Database.customerTable.get(i).setSalary(Double.parseDouble(txtSalary.getText()));
+                    searchCustomer();
+                    new Alert(Alert.AlertType.INFORMATION, "Customer Updated!").show();
+                }
+            }
         }
-
-
     }
 
     private void clearFields() {
