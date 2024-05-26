@@ -30,7 +30,19 @@ public class CustomerFormController {
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
         searchCustomer();
+
+        tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            setData(newValue);
+        });
     }
+    private void setData(CustomerTM tm) {
+        txtID.setText(tm.getId());
+        txtName.setText(tm.getName());
+        txtAddress.setText(tm.getAddress());
+        txtSalary.setText(String.valueOf(tm.getSalary()));//get Double .Return String type
+
+    }
+
 
     private void searchCustomer() {
         ObservableList<CustomerTM> tmList = FXCollections.observableArrayList();
@@ -40,15 +52,14 @@ public class CustomerFormController {
             tmList.add(tm);
 
 
-
             btn.setOnAction(event -> {
-               // System.out.println(c.getId());
-                Alert alert =new Alert(Alert.AlertType.CONFIRMATION,"Are You sure whether do you want to delete this Customer?",ButtonType.YES,ButtonType.NO);
+                // System.out.println(c.getId());
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You sure whether do you want to delete this Customer?", ButtonType.YES, ButtonType.NO);
                 //alert.show();
                 Optional<ButtonType> buttonType = alert.showAndWait();
-                if (buttonType.get()==ButtonType.YES){
+                if (buttonType.get() == ButtonType.YES) {
 
-                    boolean isDeleted =  Database.customerTable.remove(c);
+                    boolean isDeleted = Database.customerTable.remove(c);
                     if (isDeleted) {
                         searchCustomer();
                         clearFields();
