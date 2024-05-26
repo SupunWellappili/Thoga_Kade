@@ -22,6 +22,7 @@ public class CustomerFormController {
     public TableColumn colAddress;
     public TableColumn colSalary;
     public TableColumn colOption;
+    public Button btnSaveCustomer;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -79,15 +80,25 @@ public class CustomerFormController {
 
     public void saveCustomerOnAction(ActionEvent actionEvent) {
         Customer c1 = new Customer(txtID.getText(), txtName.getText(), txtAddress.getText(), Double.parseDouble(txtSalary.getText()));
-        boolean isSaved = Database.customerTable.add(c1);
-        if (isSaved) {
-            searchCustomer();
-            clearFields();
-            new Alert(Alert.AlertType.INFORMATION, "Customer saved!").show();
 
-        } else {
-            new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+        if (btnSaveCustomer.getText().equalsIgnoreCase("Save Customer")){
+            //save
+            boolean isSaved = Database.customerTable.add(c1);
+            if (isSaved) {
+                searchCustomer();
+                clearFields();
+                new Alert(Alert.AlertType.INFORMATION, "Customer saved!").show();
+
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+            }
+
+        }else {
+            //update
+
         }
+
+
     }
 
     private void clearFields() {

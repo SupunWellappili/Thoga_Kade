@@ -31,7 +31,7 @@
             <TableColumn fx:id="colOption" minWidth="9.195404052734375" prefWidth="92.763671875" text="Option" />
         </columns>
       </TableView>
-      <Button layoutX="472.0" layoutY="138.0" mnemonicParsing="false" onAction="#saveCustomerOnAction" text="Save customer" />
+      <Button fx:id="btnSaveCustomer" layoutX="472.0" layoutY="138.0" mnemonicParsing="false" onAction="#saveCustomerOnAction" text="Save customer" />
       <Button layoutX="472.0" layoutY="31.0" mnemonicParsing="false" text="+New Customer" />
       <Button layoutX="34.0" layoutY="28.0" mnemonicParsing="false" text="Back Home" />
    </children>
