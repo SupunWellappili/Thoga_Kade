@@ -3,12 +3,18 @@ package lk.gdse.ijse.pos.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import lk.gdse.ijse.pos.db.Database;
 import lk.gdse.ijse.pos.modal.Customer;
 import lk.gdse.ijse.pos.view.tm.CustomerTM;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class CustomerFormController {
@@ -23,6 +29,7 @@ public class CustomerFormController {
     public TableColumn colSalary;
     public TableColumn colOption;
     public Button btnSaveCustomer;
+    public AnchorPane customerFormContext;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -106,6 +113,7 @@ public class CustomerFormController {
                     Database.customerTable.get(i).setSalary(Double.parseDouble(txtSalary.getText()));
                     searchCustomer();
                     new Alert(Alert.AlertType.INFORMATION, "Customer Updated!").show();
+                    clearFields();
                 }
             }
         }
@@ -117,5 +125,15 @@ public class CustomerFormController {
         txtAddress.clear();
         txtSalary.clear();
 
+    }
+
+    public void newCustomerOnAction(ActionEvent actionEvent) {
+        btnSaveCustomer.setText("Save Customer");
+    }
+
+    public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage =(Stage) customerFormContext.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../pos/view/DashBoardForm.fxml"))));
+        stage.show();
     }
 }

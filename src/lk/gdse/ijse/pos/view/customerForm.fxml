@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.gdse.ijse.pos.controller.CustomerFormController">
+<AnchorPane fx:id="customerFormContext" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.gdse.ijse.pos.controller.CustomerFormController">
    <children>
       <Label layoutX="183.0" layoutY="23.0" prefHeight="43.0" prefWidth="243.0" text="Customer Form" textFill="#612d44">
          <font>
@@ -32,7 +32,7 @@
         </columns>
       </TableView>
       <Button fx:id="btnSaveCustomer" layoutX="472.0" layoutY="138.0" mnemonicParsing="false" onAction="#saveCustomerOnAction" text="Save customer" />
-      <Button layoutX="472.0" layoutY="31.0" mnemonicParsing="false" text="+New Customer" />
-      <Button layoutX="34.0" layoutY="28.0" mnemonicParsing="false" text="Back Home" />
+      <Button layoutX="472.0" layoutY="31.0" mnemonicParsing="false" onAction="#newCustomerOnAction" text="+New Customer" />
+      <Button layoutX="34.0" layoutY="28.0" mnemonicParsing="false" onAction="#backToHomeOnAction" text="Back Home" />
    </children>
 </AnchorPane>
