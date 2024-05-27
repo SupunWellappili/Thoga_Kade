@@ -32,7 +32,7 @@ public class CustomerFormController {
     public AnchorPane customerFormContext;
     public TextField txtSearch;
 
-    private String searchText ="";
+    private String searchText = "";
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -49,8 +49,8 @@ public class CustomerFormController {
         });
 
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            searchText=newValue;
-             searchCustomer(searchText);
+            searchText = newValue;
+            searchCustomer(searchText);
         });
 
     }
@@ -68,29 +68,33 @@ public class CustomerFormController {
     private void searchCustomer(String text) {
         ObservableList<CustomerTM> tmList = FXCollections.observableArrayList();
         for (Customer c : Database.customerTable) {
-            Button btn = new Button("Delete");
-            CustomerTM tm = new CustomerTM(c.getId(), c.getName(), c.getAddress(), c.getSalary(), btn);
-            tmList.add(tm);
+
+            if (c.getName().contains(text) || c.getAddress().contains(text)) {
+
+                Button btn = new Button("Delete");
+                CustomerTM tm = new CustomerTM(c.getId(), c.getName(), c.getAddress(), c.getSalary(), btn);
+                tmList.add(tm);
 
 
-            btn.setOnAction(event -> {
-                // System.out.println(c.getId());
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You sure whether do you want to delete this Customer?", ButtonType.YES, ButtonType.NO);
-                //alert.show();
-                Optional<ButtonType> buttonType = alert.showAndWait();
-                if (buttonType.get() == ButtonType.YES) {
+                btn.setOnAction(event -> {
+                    // System.out.println(c.getId());
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You sure whether do you want to delete this Customer?", ButtonType.YES, ButtonType.NO);
+                    //alert.show();
+                    Optional<ButtonType> buttonType = alert.showAndWait();
+                    if (buttonType.get() == ButtonType.YES) {
 
-                    boolean isDeleted = Database.customerTable.remove(c);
-                    if (isDeleted) {
-                        searchCustomer(searchText);
-                        clearFields();
-                        new Alert(Alert.AlertType.INFORMATION, "Customer Deleted!").show();
+                        boolean isDeleted = Database.customerTable.remove(c);
+                        if (isDeleted) {
+                            searchCustomer(searchText);
+                            clearFields();
+                            new Alert(Alert.AlertType.INFORMATION, "Customer Deleted!").show();
 
-                    } else {
-                        new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                        } else {
+                            new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                        }
                     }
-                }
-            });
+                });
+            }
         }
 
         tblCustomer.setItems(tmList);
@@ -141,7 +145,7 @@ public class CustomerFormController {
     }
 
     public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage =(Stage) customerFormContext.getScene().getWindow();
+        Stage stage = (Stage) customerFormContext.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../pos/view/DashBoardForm.fxml"))));
         stage.show();
     }
