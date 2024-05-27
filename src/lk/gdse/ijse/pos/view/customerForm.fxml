@@ -21,7 +21,7 @@
       <TextField fx:id="txtName" layoutX="122.0" layoutY="97.0" promptText="Name : " />
       <TextField fx:id="txtAddress" layoutX="292.0" layoutY="97.0" promptText="Address : " />
       <TextField fx:id="txtSalary" layoutX="460.0" layoutY="97.0" prefHeight="26.0" prefWidth="134.0" promptText="Salary : " />
-      <TextField layoutX="14.0" layoutY="137.0" prefHeight="26.0" prefWidth="441.0" promptText="Search  Customer : " />
+      <TextField fx:id="txtSearch" layoutX="14.0" layoutY="137.0" prefHeight="26.0" prefWidth="441.0" promptText="Search  Customer : " />
       <TableView fx:id="tblCustomer" layoutX="12.0" layoutY="178.0" prefHeight="200.0" prefWidth="578.0" style="-fx-background-color: #7f8c8d;">
         <columns>
           <TableColumn fx:id="colID" prefWidth="88.16092586517334" text=" ID" />
