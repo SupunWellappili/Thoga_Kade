@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -25,13 +26,13 @@ public class DashBoardFormController {
 
     private void setDateAndTime() {
         //setTime
-        /*Timeline time = new Timeline(
+        Timeline time = new Timeline(
                 new KeyFrame(Duration.ZERO, e -> {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy-MM-dd HH:mm:ss");
-                    lblTime.setText(LocalTime.now().format(formatter));
+                    lblTime.setText(LocalDateTime.now().format(formatter));
                 }), new KeyFrame(Duration.seconds(1)));
         time.setCycleCount(Animation.INDEFINITE);
-        time.play();*/
+        time.play();
     }
 
     public void openCustomerFormOnAction(ActionEvent actionEvent) throws IOException {

@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,9 +14,7 @@
             <Font name="Arial Black" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" alignment="CENTER_RIGHT" layoutX="440.0" layoutY="15.0" text="2024-05-24" />
-      <Label fx:id="lblTime" alignment="CENTER_RIGHT" layoutX="537.0" layoutY="16.0" text="10:20:43" />
-      <Separator layoutX="520.0" layoutY="7.0" orientation="VERTICAL" prefHeight="32.0" prefWidth="6.0" />
+      <Label fx:id="lblTime" alignment="CENTER_RIGHT" layoutX="463.0" layoutY="19.0" text="10:20:43" />
       <Button layoutX="25.0" layoutY="64.0" mnemonicParsing="false" onAction="#openCustomerFormOnAction" prefHeight="83.0" prefWidth="185.0" style="-fx-background-color: #8e44ad;" text="Customer">
          <font>
             <Font name="Al Nile" size="25.0" />
